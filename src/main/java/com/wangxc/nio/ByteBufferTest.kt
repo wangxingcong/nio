@@ -121,6 +121,44 @@ class ByteBufferTest {
 
     @Test
     fun test10() {
-        
+        val wrap = ByteBuffer.wrap(byteArrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8))
+        val buffer = ByteBuffer.wrap(byteArrayOf(11, 22, 33, 44))
+        wrap.position(2)
+        val put = wrap.put(buffer)
+        println(wrap)
+        println(buffer)
+    }
+
+    @Test
+    fun test11() {
+        val allocate = ByteBuffer.allocate(100)
+        val putChar = allocate.putChar('a')
+        println("allocate.position() = ${allocate.position()}")
+        allocate.putDouble(0.1)
+        println("allocate.position() = ${allocate.position()}")
+        allocate.putFloat(0.2F)
+        println("allocate.position() = ${allocate.position()}")
+        allocate.putInt(1)
+        println("allocate.position() = ${allocate.position()}")
+        allocate.putLong(2L)
+        println("allocate.position() = ${allocate.position()}")
+        allocate.putShort(2)
+        println("allocate.position() = ${allocate.position()}")
+        allocate.putLong(30, 2L)
+        println("allocate = ${allocate}")
+    }
+
+    @Test
+    fun slice() {
+        val wrap = ByteBuffer.wrap(byteArrayOf(0, 1, 2, 3, 4, 5, 6, 7, 9))
+        wrap.position(5)
+        val slice = wrap.slice()
+        wrap.put(3, 99)
+        println(wrap)
+        println(wrap.array())
+        println(slice.array())
+        println(Arrays.toString(wrap.array()))
+        println(slice)
+        println(Arrays.toString(slice.array()))
     }
 }
