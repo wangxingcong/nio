@@ -1,11 +1,11 @@
-package com.wangxc.nio;
+package com.wangxc.nio.part1;
 
 import java.nio.ByteBuffer;
 
 /**
  * @author Wang
  */
-public class Test1 {
+public class Capacity {
     public static void main(String[] args) {
         ByteBuffer byteBuffer = ByteBuffer.wrap(new byte[]{1, 2, 3});
 
